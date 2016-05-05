@@ -1,0 +1,22 @@
+{
+  "name": "helpdesk-extension",
+  "version": "0.5.0",
+  "description": "a chrome extension to display the 'up' status of servers to keep helpdesk 'in the know'.",
+  "main": "app/index.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "keywords": [
+    "chrome",
+    "extension",
+    "javascript",
+    "node",
+    "nodejs",
+    "helpdesk"
+  ],
+  "author": "Andy Nunez",
+  "license": "ISC",
+  "devDependencies": {
+    "generator-chrome-extension": "^0.5.6"
+  }
+}

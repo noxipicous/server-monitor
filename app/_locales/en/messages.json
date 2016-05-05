@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "up-status",
+    "description": "The name of the application"
+  },
+  "appDescription": {
+    "message": "a chrome extension to display the &#39;up&#39; status of servers to keep helpdesk &#39;in the know&#39;.",
+    "description": "The description of the application"
+  }
+}
