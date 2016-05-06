@@ -10,8 +10,17 @@
     <link href="styles/main.css" rel="stylesheet">
     <!-- endbuild -->
   </head>
-  <body>
-    <h1>'Allo, 'Allo!</h1>
+  <body ng-app="app">
+    <h1>Up Status</h1>
+    <table>
+      <th>
+        <input type="text" placeholder="type to search">
+      </th>
+      <tr ng-repeat="server in servers">
+        <td>{{ server.status }}</td> 
+        <td>{{ server.name }}</td>
+      </tr>
+    </table>
 
     <!-- build:js scripts/popup-vendor.js -->
     <!-- bower:js -->
