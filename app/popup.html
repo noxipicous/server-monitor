@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html ng-app="app">
   <head>
     <meta charset="utf-8">
     <!-- build:css styles/popup-vendor.css -->
@@ -8,27 +8,49 @@
     <!-- endbuild -->
     <!-- build:css styles/main.css -->
     <link href="styles/main.css" rel="stylesheet">
+    <link href="app/bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="app/bower_components/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet">
+    
+   <!-- build:js scripts/popup.js -->
+    <script src="app/bower_components/angular/angular.min.js"></script>
+    <script src="app/bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="scripts/popup.js"></script>
     <!-- endbuild -->
   </head>
-  <body ng-app="app">
-    <h1>Up Status</h1>
-    <table>
-      <th>
-        <input type="text" placeholder="type to search">
-      </th>
-      <tr ng-repeat="server in servers">
-        <td>{{ server.status }}</td> 
-        <td>{{ server.name }}</td>
-      </tr>
-    </table>
+  <body ng-controller="MonitorController as monitor">
+    <div class="container">
+      <h1>Server(s) Status</h1>
+ 
+      <table>
+        <th>
+          <input type="text" placeholder="type to search" ng-model="searchParam">
+        </th>
+        <tr ng-repeat="server in monitor.servers | filter:searchParam">
+          <td>
+            <div ng-switch class="animate-switch-container" on="server.status">
+              <div ng-switch-when="0" class="animate-switch">
+                 <span class="glyphicon glyphicon-ok-sign" aria-hidden="true" ></span>
+              </div>
+              <div ng-switch-when="1" class="animate-switch">
+                 <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+              </div>
+              <div ng-switch-when="2" class="animate-switch">
+                 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              </div>
+              <div ng-switch-default class="animate-switch">
+                 <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+              </div>
+            </div>     
+          </td>
+          
+          <td>{{ server.name }}</td> 
+        </tr>
+      </table>
+    </div>
 
     <!-- build:js scripts/popup-vendor.js -->
     <!-- bower:js -->
     <!-- endbower -->
-    <!-- endbuild -->
-
-    <!-- build:js scripts/popup.js -->
-    <script src="scripts/popup.js"></script>
     <!-- endbuild -->
   </body>
 </html>
